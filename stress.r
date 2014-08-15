@@ -288,7 +288,7 @@ readConcatenatedPhyDat = function(group,alignDir,badNames,goodNames) {
 #model is model
 #k is k
 #optNni is optNni
-fitTreeConcatenate = function(phy,group,alignDir,badNames,goodNames,model="GTR",k=10,optNni=TRUE) {
+fitTreeConcatenate = function(phy,group,alignDir,badNames,goodNames,model="GTR",k=4,optNni=TRUE) {
 	concat.dna = readConcatenatedDNA(group,alignDir,badNames,goodNames)
 	concat.phyDat = phyDat(concat.dna)
 	optPML = pml(phy,concat.phyDat,model=model,k=k)

@@ -273,7 +273,7 @@ readConcatenatedPhyDat = function(group,alignDir,badNames,goodNames) {
 			concatenated.dna = curDat
 			initialized=TRUE
 		} else {
-			concatenated.dna = c(concatenated.dna,curDat)
+			concatenated.dna = cbind(concatenated.dna,curDat)
 		}
 	}
 	return(concatenated.dna)

@@ -206,7 +206,8 @@ readFastaToPhyDat = function(fastaFile,badNames,goodNames) {
 	dna.matrix = read.dna(fastaFile,format="fasta",as.character=TRUE)
 	curNames = rownames(dna.matrix)
 	nameMapping = sapply(badNames,grep,curNames)
-	rownames(dna.matrix)=goodNames[nameMapping]
+	dna.matrix = dna.matrix[nameMapping,]
+	rownames(dna.matrix)=goodNames
 	return(phyDat(dna.matrix))
 }
 

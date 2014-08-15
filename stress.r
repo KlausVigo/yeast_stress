@@ -224,10 +224,10 @@ testDNAshift.group = function(phy,group,branches,alignDir,badNames,goodNames) {
 	return(res)
 }
 
-buildTree = function(fastaFile,phy,badNames,goodNames,model="JC") {
+buildTree = function(fastaFile,phy,badNames,goodNames,model="JC",k=4) {
 	dat = readFastaToPhyDat(fastaFile,badNames,goodNames)
-	optPML = pml(phy,dat,model=model)
-	optPML = optim.pml(optPML,optNni=TRUE,optQ=TRUE,optBf=TRUE,optInv=TRUE,optGamma=TRUE)
+	optPML = pml(phy,dat,model=model,k=k)
+	optPML = optim.pml(optPML,optNni=TRUE,model=model,optInv=TRUE,optGamma=TRUE)
 	return(optPML)
 }
 
@@ -292,6 +292,6 @@ fitTreeConcatenate = function(phy,group,alignDir,badNames,goodNames,model="GTR",
 	concat.dna = readConcatenatedDNA(group,alignDir,badNames,goodNames)
 	concat.phyDat = phyDat(concat.dna)
 	optPML = pml(phy,concat.phyDat,model=model,k=k)
-	optPML = optim.pml(optPML,optNni=optNni,optQ=TRUE,optBf=TRUE,optInv=TRUE,optGamma=TRUE)
+	optPML = optim.pml(optPML,optNni=optNni,model=model,optInv=TRUE,optGamma=TRUE)
 	return(optPML)
 }
